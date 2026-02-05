@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès Autorisé</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .container { text-align: center; }
+        h1 { color: #008000; }
+    </style>
+
+    <script>
+        function estBienUnMobile() {
+            const ua = navigator.userAgent.toLowerCase();
+
+            const estMobile = /iphone|android|mobile|windows phone/.test(ua);
+            const estTablette = /ipad/.test(ua) || (ua.includes("android") && !ua.includes("mobile"));
+
+            return estMobile && !estTablette;
+        }
+
+        if (!estBienUnMobile()) {
+            window.location.replace("acces-refuse.html");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Only mobile</h1>
+        <p>Seuls les téléphones ont le droit d'accéder à cette page.</p>
+    </div>
+</body>
+</html>
